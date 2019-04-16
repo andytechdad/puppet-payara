@@ -1,12 +1,12 @@
 {
-  "name": "fatmcgav-glassfish",
-  "author": "Gavin Williams",
+  "name": "puppet-payara",
+  "author": "Andy Brown",
   "license": "Apache-2.0",
-  "project_page": "http://github.com/fatmcgav/puppet-glassfish",
-  "source": "git://github.com/fatmcgav/puppet-glassfish.git",
-  "issue_url": "https://github.com/fatmcgav/fatmcgav-glassfish/issues/new",
-  "summary": "Install and configure Glassfish J2EE application server.",
-  "version": "0.7.1",
+  "project_page": "https://github.com/andytechdad/puppet-payara",
+  "source": "git://github.com/andytechdad/puppet-payara.git",
+  "issue_url": "https://github.com/andytechdad/puppet-payara/issues/new",
+  "summary": "Install and configure Payara J2EE application server. (Open Source fork of Glassfish)",
+  "version": "0.0.1",
   "dependencies": [
     {
       "name": "puppetlabs-stdlib",
@@ -17,32 +17,24 @@
     {
       "operatingsystem": "RedHat",
       "operatingsystemrelease": [
-        "5",
-        "6",
         "7"
       ]
     },
     {
       "operatingsystem": "CentOS",
       "operatingsystemrelease": [
-        "5",
-        "6",
         "7"
       ]
     },
     {
       "operatingsystem": "OracleLinux",
       "operatingsystemrelease": [
-        "5",
-        "6",
         "7"
       ]
     },
     {
       "operatingsystem": "Scientific",
       "operatingsystemrelease": [
-        "5",
-        "6",
         "7"
       ]
     },
@@ -65,7 +57,7 @@
   "requirements": [
     {
       "name": "puppet",
-      "version_requirement": ">=3.0.0 <4.0.0"
+      "version_requirement": ">=4.0.0"
     }
   ]
 }
