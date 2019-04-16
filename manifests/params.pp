@@ -33,7 +33,7 @@ class payara::params {
   $payara_package_prefix      = 'payara'
 
   # Default Payara version
-  $payara_version             = '5.181'
+  $payara_version             = '5.191'
 
   # Default Payara install parent directory.
   $payara_parent_dir          = '/opt'

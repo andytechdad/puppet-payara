@@ -42,35 +42,18 @@ class payara::install {
 
   # Take action based on $install_method.
   case $payara::install_method {
-    'package' : {
-      # Build package from $package_prefix and $version
-      $package_name = "${payara::package_prefix}-${payara::version}"
-
-      # Install the package.
-      package { $package_name:
-        ensure  => present,
-        require => Anchor['payara::install::start'],
-        before  => Anchor['payara::install::end']
-      }
-
-      # Run User/Group create before Package install, If manage_accounts = true.
-      if $payara::manage_accounts {
-        User[$payara::user] -> Package[$package_name]
-      }
-    }
     'zip'     : {
-      # Need to download payara from java.net
-      # $payara_download_site = "http://download.java.net/payara/${payara::version}/release"
       $payara_download_site = $payara::download_mirror ? {
-        undef   => "http://download.java.net/payara/${payara::version}/release",
+        undef   => "http://search.maven.org/remotecontent?filepath=fish/payara/distributions/payara/$payara::version",
         default => $payara::download_mirror
       }
-      $payara_download_file = "payara-${payara::version}.zip"
+      $payara_download_file = "payara-$payara::version.zip"
       $payara_download_dest = "${payara::tmp_dir}/${payara_download_file}"
 
       # Work out major version for installation
       $version_arr             = split($payara::version, '[.]')
       $mjversion               = $version_arr[0]
+
 
       # Make sure that $tmp_dir exists.
       file { $payara::tmp_dir:
@@ -131,7 +114,7 @@ class payara::install {
         # Remove default domain1.
         file { 'remove-domain1':
           ensure  => absent,
-          path    => "${payara::payara_dir}/payara/domains/domain1",
+          path    => "${payara::payara_dir}/glassfish/domains/domain1",
           force   => true,
           backup  => false,
           require => Exec["move-payara${mjversion}"],
@@ -139,6 +122,24 @@ class payara::install {
         }
       }
     }
+
+    'package' : {
+      # Build package from $package_prefix and $version
+      $package_name = "${payara::package_prefix}-${payara::version}"
+
+      # Install the package.
+      package { $package_name:
+        ensure  => present,
+        require => Anchor['payara::install::start'],
+        before  => Anchor['payara::install::end']
+      }
+
+      # Run User/Group create before Package install, If manage_accounts = true.
+      if $payara::manage_accounts {
+        User[$payara::user] -> Package[$package_name]
+      }
+    }
+
     default   : {
       fail("Unrecognised Installation method ${payara::install_method}. Choose one of: 'package','zip'.")
     }
