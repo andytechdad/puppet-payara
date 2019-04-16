@@ -1,0 +1,4 @@
+# File managed by Puppet
+if [ -d <%= scope.lookupvar('payara::payara_dir') %>/glassfish/bin ]; then
+	pathmunge <%= scope.lookupvar('payara::payara_dir') %>/glassfish/bin
+fi

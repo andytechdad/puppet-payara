@@ -9,7 +9,7 @@
 . /etc/init.d/functions
 
 RETVAL=0
-GLASSFISH_BIN="<%= scope.lookupvar('glassfish::glassfish_dir') %>/glassfish/bin"
+GLASSFISH_BIN="<%= scope.lookupvar('payara::payara_dir') %>/glassfish/bin"
 
 # Setup Domain and User values
 INSTANCE="<%= @instance_name %>"
