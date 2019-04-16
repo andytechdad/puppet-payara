@@ -1,6 +1,6 @@
-# == Class: glassfish::params
+# == Class: payara::params
 #
-# This class manages glassfish module params.
+# This class manages payara module params.
 #
 # === Parameters
 #
@@ -18,76 +18,76 @@
 #
 # Copyright 2014 Gavin Williams, unless otherwise noted.
 #
-class glassfish::params {
+class payara::params {
   # Installation method. Can be: 'package','zip'.
-  $glassfish_install_method      = 'zip'
+  $payara_install_method      = 'zip'
 
-  # Default glassfish install location
-  $glassfish_install_dir         = undef
+  # Default payara install location
+  $payara_install_dir         = undef
 
-  # Default glassfish temporary directory for downloading Zip.
-  $glassfish_tmp_dir             = '/tmp'
+  # Default payara temporary directory for downloading Zip.
+  $payara_tmp_dir             = '/tmp'
 
   # RPM Package prefix
-  $glassfish_package_prefix      = 'glassfish3'
+  $payara_package_prefix      = 'payara3'
 
   # Default Glassfish version
-  $glassfish_version             = '3.1.2.2'
+  $payara_version             = '3.1.2.2'
 
   # Default Glassfish install parent directory.
-  $glassfish_parent_dir          = '/usr/local'
+  $payara_parent_dir          = '/usr/local'
 
   # Should Glassfish manage user accounts/groups?
-  $glassfish_manage_accounts     = true
+  $payara_manage_accounts     = true
   # Default Glassfish User
-  $glassfish_user                = 'glassfish'
+  $payara_user                = 'payara'
   # Default Glassfish Group
-  $glassfish_group               = 'glassfish'
+  $payara_group               = 'payara'
 
   # Should the included default 'domain1' be removed?
-  $glassfish_remove_default_domain = true
+  $payara_remove_default_domain = true
 
   # Default Glassfish asadmin username
-  $glassfish_asadmin_user        = 'admin'
+  $payara_asadmin_user        = 'admin'
   # Default Glassfish asadmin password file
-  $glassfish_asadmin_passfile    = '/home/glassfish/asadmin.pass'
+  $payara_asadmin_passfile    = '/home/payara/asadmin.pass'
   # Default Glassfish asadmin master password
-  $glassfish_asadmin_master_password = 'changeit'
+  $payara_asadmin_master_password = 'changeit'
   # Default Glassfish asadmin password
-  $glassfish_asadmin_password    = 'adminadmin'
+  $payara_asadmin_password    = 'adminadmin'
   # Should a passfile be created?
-  $glassfish_create_passfile     = true
+  $payara_create_passfile     = true
 
-  # Should a glassfish domain be created on installation?
-  $glassfish_create_domain       = false
-  # Should a glassfish service be created on installation?
-  $glassfish_create_service      = true
+  # Should a payara domain be created on installation?
+  $payara_create_domain       = false
+  # Should a payara service be created on installation?
+  $payara_create_service      = true
   # Default Glassfish domain, portbase and profile
-  $glassfish_domain              = undef
-  $glassfish_portbase            = '4800'
+  $payara_domain              = undef
+  $payara_portbase            = '4800'
   # Default Glassfish service name
-  $glassfish_service_name        = undef
+  $payara_service_name        = undef
 
-  # Should the glassfish domain be started upon creation?
-  $glassfish_start_domain        = true
+  # Should the payara domain be started upon creation?
+  $payara_start_domain        = true
 
   # Should secure-admin be enabled upon creation?
-  $glassfish_enable_secure_admin = true
+  $payara_enable_secure_admin = true
 
   # Glassfish domain tempalte
-  $glassfish_domain_template     = undef
+  $payara_domain_template     = undef
 
   # Should the path be updated?
   case $::osfamily {
-    'RedHat'  : { $glassfish_add_path = true }
-    'Debian'  : { $glassfish_add_path = true }
-    default : { $glassfish_add_path = false }
+    'RedHat'  : { $payara_add_path = true }
+    'Debian'  : { $payara_add_path = true }
+    default : { $payara_add_path = false }
   }
 
   # Should this module manage Java installation?
-  $glassfish_manage_java = true
+  $payara_manage_java = true
   # JDK version: java-7-oracle, java-7-openjdk, java-6-oracle, java-6-openjdk
-  $glassfish_java_ver    = 'java-7-openjdk'
+  $payara_java_ver    = 'java-7-openjdk'
 
   # Set package names based on Operating System...
   case $::osfamily {
@@ -110,10 +110,10 @@ class glassfish::params {
 
   # Clustering config params
   # Enable GMS?
-  $glassfish_gms_enabled       = true
+  $payara_gms_enabled       = true
 
   # Multicase params
-  $glassfish_multicast_port    = undef
-  $glassfish_multicast_address = undef
+  $payara_multicast_port    = undef
+  $payara_multicast_address = undef
 
 }

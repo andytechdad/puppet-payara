@@ -1,6 +1,6 @@
-# == Define: glassfish::create_service
+# == Define: payara::create_service
 #
-# Create a glassfish service.
+# Create a payara service.
 #
 # === Parameters
 #
@@ -17,7 +17,7 @@
 #  Defaults to undef
 #
 # [*runuser*] - User to run process as.
-#  Defaults to $glassfish::user
+#  Defaults to $payara::user
 #
 # [*running*] - Is the domain already running?
 #  Defaults to false
@@ -42,12 +42,12 @@
 #
 # Copyright 2014 Gavin Williams, unless otherwise noted.
 #
-define glassfish::create_service (
+define payara::create_service (
   $domain_name   = undef,
   $cluster_name  = undef,
   $instance_name = undef,
   $node_name     = undef,
-  $runuser       = $glassfish::user,
+  $runuser       = $payara::user,
   $running       = false,
   $mode          = 'domain',
   $das_port      = undef,
@@ -80,7 +80,7 @@ define glassfish::create_service (
 
   # Work out the correct service_name
   if ($service_name == undef) {
-    $svc_name = "glassfish_${title}"
+    $svc_name = "payara_${title}"
   } else {
     $svc_name = $service_name
   }
@@ -89,14 +89,14 @@ define glassfish::create_service (
   case $::osfamily {
     'RedHat' : {
       case $mode {
-        'domain'   : { $service_file = template('glassfish/glassfish-init-domain-el.erb') }
-        'cluster'  : { $service_file = template('glassfish/glassfish-init-cluster-el.erb') }
-        'instance' : { $service_file = template('glassfish/glassfish-init-instance-el.erb') }
+        'domain'   : { $service_file = template('payara/payara-init-domain-el.erb') }
+        'cluster'  : { $service_file = template('payara/payara-init-cluster-el.erb') }
+        'instance' : { $service_file = template('payara/payara-init-instance-el.erb') }
         default    : { fail("Mode ${mode} not supported.") }
       }
     }
     'Debian' : {
-      $service_file = template('glassfish/glassfish-init-domain-debian.erb')
+      $service_file = template('payara/payara-init-domain-debian.erb')
     }
     default  : {
       fail("OSFamily ${::osfamily} not supported.")
@@ -115,7 +115,7 @@ define glassfish::create_service (
   # Need to stop the domain if it was auto-started
   if $running {
     exec { "stop_${domain_name}":
-      command => "su - ${runuser} -c \"${glassfish::glassfish_asadmin_path} stop-domain ${domain_name}\"",
+      command => "su - ${runuser} -c \"${payara::payara_asadmin_path} stop-domain ${domain_name}\"",
       unless  => "service ${svc_name} status && pgrep -f domains/${domain_name}",
       path    => ['/sbin', '/usr/sbin', '/bin', '/usr/bin'],
       before  => Service[$svc_name]

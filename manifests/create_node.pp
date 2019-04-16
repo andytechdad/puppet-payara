@@ -1,6 +1,6 @@
-# == Define: glassfish::create_node
+# == Define: payara::create_node
 #
-# Create a glassfish node.
+# Create a payara node.
 #
 # === Parameters
 #
@@ -22,7 +22,7 @@
 #
 # [*node_user*]
 #  Username to run node under.
-#  Defaults to $glassfish::user.
+#  Defaults to $payara::user.
 #
 # [*ensure*]
 #  Cluster ensure state
@@ -37,7 +37,7 @@
 #  Defaults to '4848'.
 #
 # [*login*]
-#  Should glassfish login be run?
+#  Should payara login be run?
 #  Defaults to true.
 #
 # === Examples
@@ -51,12 +51,12 @@
 #
 # Copyright 2014 Gavin Williams, unless otherwise noted.
 #
-define glassfish::create_node (
-  $asadmin_user     = $glassfish::asadmin_user,
-  $asadmin_passfile = $glassfish::asadmin_passfile,
+define payara::create_node (
+  $asadmin_user     = $payara::asadmin_user,
+  $asadmin_passfile = $payara::asadmin_passfile,
   $node_host        = $::hostname,
   $node_name        = $name,
-  $node_user        = $glassfish::user,
+  $node_user        = $payara::user,
   $ensure           = present,
   $das_host         = undef,
   $das_port         = '4848',

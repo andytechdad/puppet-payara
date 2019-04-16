@@ -1,6 +1,6 @@
-# == Define: glassfish::create_instance
+# == Define: payara::create_instance
 #
-# Create a glassfish cluster instance.
+# Create a payara cluster instance.
 #
 # === Parameters
 #
@@ -14,7 +14,7 @@
 #  Defaults to undef
 #
 # [*create_service*] - Create a service for this instance.
-#  Defaults to $glassfish::create_service
+#  Defaults to $payara::create_service
 #
 # [*das_host*] - Domain Adminsitration Service host.
 #  Defaults to undef
@@ -32,10 +32,10 @@
 #  Defaults to $::hostname
 #
 # [*node_user*] - Username node is running under.
-#  Defaults to $glassfish::user
+#  Defaults to $payara::user
 #
 # [*service_name*] - Specify a custom service name.
-#  Defaults to `glassfish_${instance_name}`
+#  Defaults to `payara_${instance_name}`
 #
 # === Examples
 #
@@ -48,19 +48,19 @@
 #
 # Copyright 2014 Gavin Williams, unless otherwise noted.
 #
-define glassfish::create_instance (
-  $asadmin_user      = $glassfish::asadmin_user,
-  $asadmin_passfile  = $glassfish::asadmin_passfile,
+define payara::create_instance (
+  $asadmin_user      = $payara::asadmin_user,
+  $asadmin_passfile  = $payara::asadmin_passfile,
   $cluster           = undef,
-  $create_service    = $glassfish::create_service,
+  $create_service    = $payara::create_service,
   $das_host          = undef,
   $das_port          = '4848',
   $ensure            = present,
   $instance_name     = $name,
   $instance_portbase = undef,
   $node_name         = $::hostname,
-  $node_user         = $glassfish::user,
-  $service_name      = $glassfish::service_name) {
+  $node_user         = $payara::user,
+  $service_name      = $payara::service_name) {
   # Validate params
   validate_string($asadmin_user)
   validate_absolute_path($asadmin_passfile)
@@ -68,7 +68,7 @@ define glassfish::create_instance (
 
   # Service name
   if ($service_name == undef) {
-    $svc_name = "glassfish_${instance_name}"
+    $svc_name = "payara_${instance_name}"
   } else {
     $svc_name = $service_name
   }
@@ -88,7 +88,7 @@ define glassfish::create_instance (
 
   # Create a init.d service if required
   if $create_service {
-    glassfish::create_service { $instance_name:
+    payara::create_service { $instance_name:
       mode          => 'instance',
       instance_name => $instance_name,
       node_name     => $node_name,

@@ -1,4 +1,4 @@
-# == Define: glassfish::create_asadmin_passfile
+# == Define: payara::create_asadmin_passfile
 #
 # Creates an Asadmin Passwordfile in the specified
 #  location for the specified user.
@@ -28,7 +28,7 @@
 #
 # Copyright 2014 Gavin Williams, unless otherwise noted.
 #
-define glassfish::create_asadmin_passfile (
+define payara::create_asadmin_passfile (
   $group,
   $path,
   $user,
@@ -38,7 +38,7 @@ define glassfish::create_asadmin_passfile (
   file { $name:
     ensure  => present,
     path    => $path,
-    content => template('glassfish/passwordfile'),
+    content => template('payara/passwordfile'),
     owner   => $user,
     group   => $group,
     mode    => '0600'

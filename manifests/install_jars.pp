@@ -1,4 +1,4 @@
-# == Define: glassfish::install_jars
+# == Define: payara::install_jars
 #
 # Install additional jars if required.
 #
@@ -30,7 +30,7 @@
 #
 # Copyright 2014 Gavin Williams, unless otherwise noted.
 #
-define glassfish::install_jars (
+define payara::install_jars (
   $domain_name      = undef,
   $download         = false,
   $install_location = 'installation',
@@ -47,12 +47,12 @@ define glassfish::install_jars (
     # Set $service.
     if ($service_name == undef) {
       # Check if top-level svc_name is set
-      if ($glassfish::svc_name == undef) {
-        # Assume that the service name is of default format - glassfish_${domain_name}
-        $service = "Service[glassfish_${domain_name}]"
+      if ($payara::svc_name == undef) {
+        # Assume that the service name is of default format - payara_${domain_name}
+        $service = "Service[payara_${domain_name}]"
       } else {
         # Use top-level $svc_name value
-        $service = "Service[${glassfish::svc_name}]"
+        $service = "Service[${payara::svc_name}]"
       }
     } else {
       # Use $service_name value that was provided
@@ -63,15 +63,15 @@ define glassfish::install_jars (
   # Where do we need to install the jar, and do we need to notify a service?
   case $install_location {
     'domain'       : {
-      $jardest = "${glassfish::glassfish_dir}/glassfish/domains/${domain_name}/lib/ext/${jar}"
+      $jardest = "${payara::payara_dir}/payara/domains/${domain_name}/lib/ext/${jar}"
       $notify  = $service
     }
     'installation' : {
-      $jardest = "${glassfish::glassfish_dir}/glassfish/lib/ext/${jar}"
+      $jardest = "${payara::payara_dir}/payara/lib/ext/${jar}"
       $notify  = undef
     }
     'mq'           : {
-      $jardest = "${glassfish::glassfish_dir}/mq/lib/ext/${jar}"
+      $jardest = "${payara::payara_dir}/mq/lib/ext/${jar}"
       $notify  = undef
     }
     default        : {
@@ -84,17 +84,17 @@ define glassfish::install_jars (
 
     # Use ensure_resource to avoid duplicate declaration issues...
     ensure_resource('file',
-    "${glassfish::glassfish_dir}/glassfish/lib/ext",
+    "${payara::payara_dir}/payara/lib/ext",
     {
       'ensure' => 'directory',
-      'owner'  => $glassfish::user,
-      'group'  => $glassfish::group
+      'owner'  => $payara::user,
+      'group'  => $payara::group
     })
 
     if ($download) {
-      File["${glassfish::glassfish_dir}/glassfish/lib/ext"] -> Exec["download_${jar}"]
+      File["${payara::payara_dir}/payara/lib/ext"] -> Exec["download_${jar}"]
     } else {
-      File["${glassfish::glassfish_dir}/glassfish/lib/ext"] -> File[$jardest]
+      File["${payara::payara_dir}/payara/lib/ext"] -> File[$jardest]
     }
   }
 
@@ -104,15 +104,15 @@ define glassfish::install_jars (
       command => "wget -q -O ${jardest} ${jaraddress}",
       path    => '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin',
       creates => $jardest,
-      user    => $glassfish::user,
+      user    => $payara::user,
       notify  => $notify
     }
   } else {
     file { $jardest:
       ensure => present,
       mode   => '0755',
-      owner  => $glassfish::user,
-      group  => $glassfish::group,
+      owner  => $payara::user,
+      group  => $payara::group,
       source => $source,
       notify => $notify
     }

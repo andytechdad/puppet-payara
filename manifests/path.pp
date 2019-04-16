@@ -1,6 +1,6 @@
-# == Class: glassfish::path
+# == Class: payara::path
 #
-# Add glassfish to profile
+# Add payara to profile
 #
 # === Parameters
 #
@@ -18,28 +18,28 @@
 #
 # Copyright 2014 Gavin Williams, unless otherwise noted.
 #
-class glassfish::path {
+class payara::path {
   case $::osfamily {
     'RedHat' : {
       # Add a file to the profile.d directory
-      file { '/etc/profile.d/glassfish.sh':
+      file { '/etc/profile.d/payara.sh':
         ensure  => present,
         owner   => 'root',
         group   => 'root',
         mode    => '0644',
-        content => template('glassfish/glassfish-profile-el.erb'),
-        require => Class['glassfish::install']
+        content => template('payara/payara-profile-el.erb'),
+        require => Class['payara::install']
       }
     }
     'Debian' : {
       # Add a file to the profile.d directory
-      file { '/etc/profile.d/glassfish.sh':
+      file { '/etc/profile.d/payara.sh':
         ensure  => present,
         owner   => 'root',
         group   => 'root',
         mode    => '0644',
-        content => template('glassfish/glassfish-profile-deb.erb'),
-        require => Class['glassfish::install']
+        content => template('payara/payara-profile-deb.erb'),
+        require => Class['payara::install']
       }
     }
     default  : {
@@ -47,9 +47,9 @@ class glassfish::path {
     }
   }
 
-  # Ensure glassfish::path runs before any resources that require asadmin
-  Class['glassfish::path'] -> Glassfish::Create_domain <| |>
-  Class['glassfish::path'] -> Glassfish::Create_cluster <| |>
-  Class['glassfish::path'] -> Glassfish::Create_node <| |>
+  # Ensure payara::path runs before any resources that require asadmin
+  Class['payara::path'] -> Glassfish::Create_domain <| |>
+  Class['payara::path'] -> Glassfish::Create_cluster <| |>
+  Class['payara::path'] -> Glassfish::Create_node <| |>
 
 }

@@ -1,6 +1,6 @@
-# == Define: glassfish::create_cluster
+# == Define: payara::create_cluster
 #
-# Create a glassfish cluster.
+# Create a payara cluster.
 #
 # === Parameters
 #
@@ -13,8 +13,8 @@
 # [*cluster_name*] - Name of cluster to create.
 #  Defaults to the resource name if not specified.
 #
-# [*cluster_user*] - Name of account running glassfish cluster.
-#  Defaults to $glassfish::user.
+# [*cluster_user*] - Name of account running payara cluster.
+#  Defaults to $payara::user.
 #
 # [*dasport*] - Domain Adminsitration Service port.
 #  Defaults to '4848'.
@@ -42,16 +42,16 @@
 #
 # Copyright 2014 Gavin Williams, unless otherwise noted.
 #
-define glassfish::create_cluster (
-  $asadmin_user          = $glassfish::asadmin_user,
-  $asadmin_passfile      = $glassfish::asadmin_passfile,
+define payara::create_cluster (
+  $asadmin_user          = $payara::asadmin_user,
+  $asadmin_passfile      = $payara::asadmin_passfile,
   $cluster_name          = $name,
-  $cluster_user          = $glassfish::user,
+  $cluster_user          = $payara::user,
   $das_port              = '4848',
   $ensure                = present,
-  $gms_enabled           = $glassfish::gms_enabled,
-  $gms_multicast_port    = $glassfish::gms_multicast_port,
-  $gms_multicast_address = $glassfish::gms_multicast_address) {
+  $gms_enabled           = $payara::gms_enabled,
+  $gms_multicast_port    = $payara::gms_multicast_port,
+  $gms_multicast_address = $payara::gms_multicast_address) {
   # Validate params
   validate_string($asadmin_user)
   validate_absolute_path($asadmin_passfile)

@@ -1,6 +1,6 @@
-# == Define: glassfish::create_network_listener
+# == Define: payara::create_network_listener
 #
-# Create a glassfish network listener.
+# Create a payara network listener.
 #
 # === Parameters
 #
@@ -29,22 +29,22 @@
 # Defaults to "server"
 #
 # [*asadmin_path*] - Path to asadmin binary.
-#  Defaults to $glassfish::glassfish_asadmin_path
+#  Defaults to $payara::payara_asadmin_path
 #
 # [*asadmin_user*] - Asadmin username.
-#  Defaults to $glassfish::asadmin_user
+#  Defaults to $payara::asadmin_user
 #
 # [*asadmin_passfile*] - Asadmin password file.
-#  Defaults to $glassfish::asadmin_passfile
+#  Defaults to $payara::asadmin_passfile
 #
 # [*portbase*] - Portbase to use for domain.
-#  Defaults to $glassfish::portbase
+#  Defaults to $payara::portbase
 #
 # === Authors
 #
 # Jesse Cotton <jcotton1123@gmail.com>
 #
-define glassfish::create_network_listener (
+define payara::create_network_listener (
   $ensure            = present,
   $address           = undef,
   $port              = undef,
@@ -54,11 +54,11 @@ define glassfish::create_network_listener (
   $enabled           = true,
   $jkenabled         = false,
   $target            = server,
-  $asadmin_path      = $glassfish::glassfish_asadmin_path,
-  $asadmin_user      = $glassfish::asadmin_user,
-  $asadmin_passfile  = $glassfish::asadmin_passfile,
-  $portbase          = $glassfish::portbase,
-  $user              = $glassfish::user
+  $asadmin_path      = $payara::payara_asadmin_path,
+  $asadmin_user      = $payara::asadmin_user,
+  $asadmin_passfile  = $payara::asadmin_passfile,
+  $portbase          = $payara::portbase,
+  $user              = $payara::user
 ) {
 
   # Validate params

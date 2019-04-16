@@ -1,17 +1,17 @@
-# == Class: glassfish
+# == Class: payara
 #
-# This module manages glassfish
+# This module manages payara
 #
 # === Parameters
 #
-#  [*add_path*] - Should glassfish bin be added to path?
+#  [*add_path*] - Should payara bin be added to path?
 #  Defaults to true
 #
 #  [*asadmin_user*] - Asadmin username.
 #  Defaults to 'admin'
 #
 #  [*asadmin_passfile*] - Asadmin password file.
-#  Defaults to '/home/glassfish/asadmin.pass'
+#  Defaults to '/home/payara/asadmin.pass'
 #
 #  [*asadmin_master_password*] - Asadmin master password.
 #  Defaults to 'changeit'
@@ -19,13 +19,13 @@
 #  [*asadmin_password*] - Asadmin password.
 #  Defaults to 'adminadmin'
 #
-#  [*create_domain*] - Should a glassfish domain be created on installation?
+#  [*create_domain*] - Should a payara domain be created on installation?
 #  Defaults to false
 #
-#  [*create_service*] - Should a glassfish service be created on installation?
+#  [*create_service*] - Should a payara service be created on installation?
 #  Defaults to true
 #
-#  [*create_passfile*] - Should a glassfish password file be created?
+#  [*create_passfile*] - Should a payara password file be created?
 #  Defaults to true
 #
 #  [*domain_name*] - Glassfish domain name. Defaults to 'domain1'.
@@ -57,7 +57,7 @@
 #  Defaults to true.
 #
 #  [*package_prefix*]  - Glassfish package name prefix. Defaults to
-#  'glassfish3'.
+#  'payara3'.
 #
 #  [*parent_dir*]      - Glassfish parent directory. Defaults to '/usr/local'.
 #
@@ -67,7 +67,7 @@
 #  [*remove_default_domain*] - Should the default domain doiman1' be removed on install?
 #  Defaults to true.
 #
-#  [*start_domain*] - Should the glassfish domain be started on creation?
+#  [*start_domain*] - Should the payara domain be started on creation?
 #  Defaults to true
 #
 #  [*tmp_dir*]         - Glassfish temporary directory. Defaults to '/tmp'.
@@ -88,50 +88,50 @@
 #
 # Copyright 2014 Gavin Williams, unless otherwise noted.
 #
-class glassfish (
-  $add_path                = $glassfish::params::glassfish_add_path,
-  $asadmin_user            = $glassfish::params::glassfish_asadmin_user,
-  $asadmin_passfile        = $glassfish::params::glassfish_asadmin_passfile,
-  $asadmin_master_password = $glassfish::params::glassfish_asadmin_master_password,
-  $asadmin_password        = $glassfish::params::glassfish_asadmin_password,
-  $create_domain           = $glassfish::params::glassfish_create_domain,
-  $create_service          = $glassfish::params::glassfish_create_service,
-  $create_passfile         = $glassfish::params::glassfish_create_passfile,
-  $domain_name             = $glassfish::params::glassfish_domain,
-  $domain_template         = $glassfish::params::glassfish_domain_template,
+class payara (
+  $add_path                = $payara::params::payara_add_path,
+  $asadmin_user            = $payara::params::payara_asadmin_user,
+  $asadmin_passfile        = $payara::params::payara_asadmin_passfile,
+  $asadmin_master_password = $payara::params::payara_asadmin_master_password,
+  $asadmin_password        = $payara::params::payara_asadmin_password,
+  $create_domain           = $payara::params::payara_create_domain,
+  $create_service          = $payara::params::payara_create_service,
+  $create_passfile         = $payara::params::payara_create_passfile,
+  $domain_name             = $payara::params::payara_domain,
+  $domain_template         = $payara::params::payara_domain_template,
   $download_mirror         = undef,
-  $enable_secure_admin     = $glassfish::params::glassfish_enable_secure_admin,
-  $gms_enabled             = $glassfish::params::glassfish_gms_enabled,
-  $gms_multicast_port      = $glassfish::params::glassfish_multicast_port,
-  $gms_multicast_address   = $glassfish::params::glassfish_multicast_address,
-  $group                   = $glassfish::params::glassfish_group,
-  $install_dir             = $glassfish::params::glassfish_install_dir,
-  $install_method          = $glassfish::params::glassfish_install_method,
-  $java_ver                = $glassfish::params::glassfish_java_ver,
-  $manage_accounts         = $glassfish::params::glassfish_manage_accounts,
-  $manage_java             = $glassfish::params::glassfish_manage_java,
-  $package_prefix          = $glassfish::params::glassfish_package_prefix,
-  $parent_dir              = $glassfish::params::glassfish_parent_dir,
-  $portbase                = $glassfish::params::glassfish_portbase,
-  $remove_default_domain   = $glassfish::params::glassfish_remove_default_domain,
-  $service_name            = $glassfish::params::glassfish_service_name,
-  $start_domain            = $glassfish::params::glassfish_start_domain,
-  $tmp_dir                 = $glassfish::params::glassfish_tmp_dir,
-  $user                    = $glassfish::params::glassfish_user,
-  $version                 = $glassfish::params::glassfish_version
-  ) inherits glassfish::params {
+  $enable_secure_admin     = $payara::params::payara_enable_secure_admin,
+  $gms_enabled             = $payara::params::payara_gms_enabled,
+  $gms_multicast_port      = $payara::params::payara_multicast_port,
+  $gms_multicast_address   = $payara::params::payara_multicast_address,
+  $group                   = $payara::params::payara_group,
+  $install_dir             = $payara::params::payara_install_dir,
+  $install_method          = $payara::params::payara_install_method,
+  $java_ver                = $payara::params::payara_java_ver,
+  $manage_accounts         = $payara::params::payara_manage_accounts,
+  $manage_java             = $payara::params::payara_manage_java,
+  $package_prefix          = $payara::params::payara_package_prefix,
+  $parent_dir              = $payara::params::payara_parent_dir,
+  $portbase                = $payara::params::payara_portbase,
+  $remove_default_domain   = $payara::params::payara_remove_default_domain,
+  $service_name            = $payara::params::payara_service_name,
+  $start_domain            = $payara::params::payara_start_domain,
+  $tmp_dir                 = $payara::params::payara_tmp_dir,
+  $user                    = $payara::params::payara_user,
+  $version                 = $payara::params::payara_version
+  ) inherits payara::params {
   #
   ## Calculate some vars based on passed parameters
   #
   # Installation location
   if ($install_dir == undef) {
-    $glassfish_dir = "${parent_dir}/glassfish-${version}"
+    $payara_dir = "${parent_dir}/payara-${version}"
   } else {
-    $glassfish_dir = "${parent_dir}/${install_dir}"
+    $payara_dir = "${parent_dir}/${install_dir}"
   }
 
   # Asadmin path
-  $glassfish_asadmin_path = "${glassfish_dir}/bin/asadmin"
+  $payara_asadmin_path = "${payara_dir}/bin/asadmin"
 
   # Validate passed paramater values
   validate_bool($add_path)
@@ -165,13 +165,13 @@ class glassfish (
 
   # Do we need to manage Java?
   if $manage_java {
-    class { 'glassfish::java': before => Class['glassfish::install'] }
+    class { 'payara::java': before => Class['payara::install'] }
   }
 
   # Should we create a passfile?
   if $create_passfile {
     # Create a passfile
-    glassfish::create_asadmin_passfile { "${user}_asadmin_passfile":
+    payara::create_asadmin_passfile { "${user}_asadmin_passfile":
       asadmin_master_password => $asadmin_master_password,
       asadmin_password        => $asadmin_password,
       group                   => $group,
@@ -187,18 +187,18 @@ class glassfish (
   }
 
   # Call the install method
-  include glassfish::install
+  include payara::install
 
-  # Make sure parent_dir runs before glassfish::install.
-  File[$parent_dir] -> Class['glassfish::install']
+  # Make sure parent_dir runs before payara::install.
+  File[$parent_dir] -> Class['payara::install']
 
   # Need to manage path?
   if $add_path {
-    class { 'glassfish::path': require => Class['glassfish::install'] }
+    class { 'payara::path': require => Class['payara::install'] }
 
     # Setup path before creating the domain...
     if $create_domain {
-      Class['glassfish::path'] -> Glassfish::Create_domain[$domain_name]
+      Class['payara::path'] -> Glassfish::Create_domain[$domain_name]
     }
   }
 
@@ -210,13 +210,13 @@ class glassfish (
 
     # Service name
     if ($service_name == undef) {
-      $svc_name = "glassfish_${domain_name}"
+      $svc_name = "payara_${domain_name}"
     } else {
       $svc_name = $service_name
     }
 
     # Need to create the required domain
-    glassfish::create_domain { $domain_name: require => Class['glassfish::install'] }
+    payara::create_domain { $domain_name: require => Class['payara::install'] }
 
   }
 
