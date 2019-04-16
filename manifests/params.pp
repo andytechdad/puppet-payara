@@ -31,29 +31,29 @@ class payara::params {
   # RPM Package prefix
   $payara_package_prefix      = 'payara3'
 
-  # Default Glassfish version
+  # Default Payara version
   $payara_version             = '3.1.2.2'
 
-  # Default Glassfish install parent directory.
+  # Default Payara install parent directory.
   $payara_parent_dir          = '/usr/local'
 
-  # Should Glassfish manage user accounts/groups?
+  # Should Payara manage user accounts/groups?
   $payara_manage_accounts     = true
-  # Default Glassfish User
+  # Default Payara User
   $payara_user                = 'payara'
-  # Default Glassfish Group
+  # Default Payara Group
   $payara_group               = 'payara'
 
   # Should the included default 'domain1' be removed?
   $payara_remove_default_domain = true
 
-  # Default Glassfish asadmin username
+  # Default Payara asadmin username
   $payara_asadmin_user        = 'admin'
-  # Default Glassfish asadmin password file
+  # Default Payara asadmin password file
   $payara_asadmin_passfile    = '/home/payara/asadmin.pass'
-  # Default Glassfish asadmin master password
+  # Default Payara asadmin master password
   $payara_asadmin_master_password = 'changeit'
-  # Default Glassfish asadmin password
+  # Default Payara asadmin password
   $payara_asadmin_password    = 'adminadmin'
   # Should a passfile be created?
   $payara_create_passfile     = true
@@ -62,10 +62,10 @@ class payara::params {
   $payara_create_domain       = false
   # Should a payara service be created on installation?
   $payara_create_service      = true
-  # Default Glassfish domain, portbase and profile
+  # Default Payara domain, portbase and profile
   $payara_domain              = undef
   $payara_portbase            = '4800'
-  # Default Glassfish service name
+  # Default Payara service name
   $payara_service_name        = undef
 
   # Should the payara domain be started upon creation?
@@ -74,7 +74,7 @@ class payara::params {
   # Should secure-admin be enabled upon creation?
   $payara_enable_secure_admin = true
 
-  # Glassfish domain tempalte
+  # Payara domain tempalte
   $payara_domain_template     = undef
 
   # Should the path be updated?

@@ -107,7 +107,7 @@ define payara::create_domain (
   }
 
   # Run Create_domain resources before Create_cluster and Create_node resources
-  Glassfish::Create_domain <| |> -> Glassfish::Create_cluster <| |>
-  Glassfish::Create_domain <| |> -> Glassfish::Create_node <| |>
+  Payara::Create_domain <| |> -> Payara::Create_cluster <| |>
+  Payara::Create_domain <| |> -> Payara::Create_node <| |>
 
 }

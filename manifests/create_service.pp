@@ -4,16 +4,16 @@
 #
 # === Parameters
 #
-# [*domain_name*] - Name of Glassfish domain.
+# [*domain_name*] - Name of Payara domain.
 #  Defaults to undef
 #
-# [*cluster_name*] - Name of Glassfish cluster.
+# [*cluster_name*] - Name of Payara cluster.
 #  Defaults to undef
 #
-# [*instance_name*] - Name of Glassfish instance.
+# [*instance_name*] - Name of Payara instance.
 #  Defaults to undef
 #
-# [*node_name*] - Name of Glassfish node.
+# [*node_name*] - Name of Payara node.
 #  Defaults to undef
 #
 # [*runuser*] - User to run process as.
@@ -22,10 +22,10 @@
 # [*running*] - Is the domain already running?
 #  Defaults to false
 #
-# [*mode*] - Glassfish service mode required.
+# [*mode*] - Payara service mode required.
 #  Can be: domain, cluster or instance.
 #
-# [*das_port*] - Glassfish Domain Adminsitration Service port to connect to
+# [*das_port*] - Payara Domain Adminsitration Service port to connect to
 #
 # [*status_cmd*] - Custom status command to use when checking service state.
 #

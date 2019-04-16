@@ -121,7 +121,7 @@ define payara::install_jars (
 
   # Add dependencies to ensure runs after domain is created if installing to domain
   if ($install_location == 'domain') {
-    Domain <| title == $domain_name |> -> Glassfish::Install_jars <| install_location == 'domain' |>
+    Domain <| title == $domain_name |> -> Payara::Install_jars <| install_location == 'domain' |>
   }
 
 }

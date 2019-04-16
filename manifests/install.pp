@@ -29,7 +29,7 @@ class payara::install {
     user { $payara::user:
       ensure     => 'present',
       managehome => true,
-      comment    => 'Glassfish user account',
+      comment    => 'Payara user account',
       gid        => $payara::group,
       require    => Group[$payara::group]
     }
@@ -145,6 +145,6 @@ class payara::install {
   }
 
   # Ensure that install runs before any Create_domain & Create_node resources
-  Class['payara::install'] -> Glassfish::Create_domain <| |>
-  Class['payara::install'] -> Glassfish::Create_node <| |>
+  Class['payara::install'] -> Payara::Create_domain <| |>
+  Class['payara::install'] -> Payara::Create_node <| |>
 }

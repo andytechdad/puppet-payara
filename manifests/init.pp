@@ -28,11 +28,11 @@
 #  [*create_passfile*] - Should a payara password file be created?
 #  Defaults to true
 #
-#  [*domain_name*] - Glassfish domain name. Defaults to 'domain1'.
+#  [*domain_name*] - Payara domain name. Defaults to 'domain1'.
 #
-#  [*domain_template*] - Glassfish domain template to use.
+#  [*domain_template*] - Payara domain template to use.
 #
-#  [*download_mirror*] - Glassfish zip file download mirror.
+#  [*download_mirror*] - Payara zip file download mirror.
 #
 #  [*enable_secure_admin*] - Should secure admin be enabled?
 #  Defaults to true
@@ -43,25 +43,25 @@
 #
 #  [*gms_multicast_address*] - GMS Multicast address.
 #
-#  [*group*] - Glassfish group name.
+#  [*group*] - Payara group name.
 #
-#  [*install_method*]  - Glassfish installation method.
+#  [*install_method*]  - Payara installation method.
 #  Can be: 'zip', 'package'. Defaults to 'zip'.
 #
 #  [*java_ver*]        - Java version to install if managing Java.
 #
 #  [*manage_accounts*] - Should this module manage user accounts and groups
-#  required for Glassfish? Defaults to true.
+#  required for Payara? Defaults to true.
 #
 #  [*manage_java*]     - Should Java installation be managed by this module?
 #  Defaults to true.
 #
-#  [*package_prefix*]  - Glassfish package name prefix. Defaults to
+#  [*package_prefix*]  - Payara package name prefix. Defaults to
 #  'payara3'.
 #
-#  [*parent_dir*]      - Glassfish parent directory. Defaults to '/usr/local'.
+#  [*parent_dir*]      - Payara parent directory. Defaults to '/usr/local'.
 #
-#  [*portbase*]        - Glassfish portbase. Used when creating a domain on install.
+#  [*portbase*]        - Payara portbase. Used when creating a domain on install.
 #  Defaults to '4800'
 #
 #  [*remove_default_domain*] - Should the default domain doiman1' be removed on install?
@@ -70,12 +70,12 @@
 #  [*start_domain*] - Should the payara domain be started on creation?
 #  Defaults to true
 #
-#  [*tmp_dir*]         - Glassfish temporary directory. Defaults to '/tmp'.
+#  [*tmp_dir*]         - Payara temporary directory. Defaults to '/tmp'.
 #  Only used if installing using zip method.
 #
-#  [*user*]            - Glassfish user name.
+#  [*user*]            - Payara user name.
 #
-#  [*version*]         - Glassfish version, defaults to '3.1.2.2'.
+#  [*version*]         - Payara version, defaults to '3.1.2.2'.
 #
 # === Examples
 #
@@ -180,10 +180,10 @@ class payara (
     }
 
     # Run this before any resources that require it
-    Glassfish::Create_asadmin_passfile["${user}_asadmin_passfile"] -> Glassfish::Create_domain <| |>
-    Glassfish::Create_asadmin_passfile["${user}_asadmin_passfile"] -> Glassfish::Create_cluster <| |>
-    Glassfish::Create_asadmin_passfile["${user}_asadmin_passfile"] -> Glassfish::Create_node <| |>
-    Glassfish::Create_asadmin_passfile["${user}_asadmin_passfile"] -> Glassfish::Create_instance <| |>
+    Payara::Create_asadmin_passfile["${user}_asadmin_passfile"] -> Payara::Create_domain <| |>
+    Payara::Create_asadmin_passfile["${user}_asadmin_passfile"] -> Payara::Create_cluster <| |>
+    Payara::Create_asadmin_passfile["${user}_asadmin_passfile"] -> Payara::Create_node <| |>
+    Payara::Create_asadmin_passfile["${user}_asadmin_passfile"] -> Payara::Create_instance <| |>
   }
 
   # Call the install method
@@ -198,7 +198,7 @@ class payara (
 
     # Setup path before creating the domain...
     if $create_domain {
-      Class['payara::path'] -> Glassfish::Create_domain[$domain_name]
+      Class['payara::path'] -> Payara::Create_domain[$domain_name]
     }
   }
 

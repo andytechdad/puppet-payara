@@ -48,8 +48,8 @@ class payara::path {
   }
 
   # Ensure payara::path runs before any resources that require asadmin
-  Class['payara::path'] -> Glassfish::Create_domain <| |>
-  Class['payara::path'] -> Glassfish::Create_cluster <| |>
-  Class['payara::path'] -> Glassfish::Create_node <| |>
+  Class['payara::path'] -> Payara::Create_domain <| |>
+  Class['payara::path'] -> Payara::Create_cluster <| |>
+  Class['payara::path'] -> Payara::Create_node <| |>
 
 }
