@@ -89,35 +89,35 @@
 # Copyright 2014 Gavin Williams, unless otherwise noted.
 #
 class payara (
-  $add_path                = $payara::params::payara_add_path,
-  $asadmin_user            = $payara::params::payara_asadmin_user,
+  Boolean $add_path                = $payara::params::payara_add_path,
+  String $asadmin_user            = $payara::params::payara_asadmin_user,
   $asadmin_passfile        = $payara::params::payara_asadmin_passfile,
   $asadmin_master_password = $payara::params::payara_asadmin_master_password,
   $asadmin_password        = $payara::params::payara_asadmin_password,
-  $create_domain           = $payara::params::payara_create_domain,
-  $create_service          = $payara::params::payara_create_service,
-  $create_passfile         = $payara::params::payara_create_passfile,
-  $domain_name             = $payara::params::payara_domain,
+  Boolean $create_domain           = $payara::params::payara_create_domain,
+  Boolean $create_service          = $payara::params::payara_create_service,
+  Boolean $create_passfile         = $payara::params::payara_create_passfile,
+  String $domain_name             = $payara::params::payara_domain,
   $domain_template         = $payara::params::payara_domain_template,
-  $download_mirror         = undef,
-  $enable_secure_admin     = $payara::params::payara_enable_secure_admin,
+  Optional $download_mirror         = undef,
+  Boolean $enable_secure_admin     = $payara::params::payara_enable_secure_admin,
   $gms_enabled             = $payara::params::payara_gms_enabled,
   $gms_multicast_port      = $payara::params::payara_multicast_port,
   $gms_multicast_address   = $payara::params::payara_multicast_address,
-  $group                   = $payara::params::payara_group,
+  String $group                   = $payara::params::payara_group,
   $install_dir             = $payara::params::payara_install_dir,
   $install_method          = $payara::params::payara_install_method,
   $java_ver                = $payara::params::payara_java_ver,
-  $manage_accounts         = $payara::params::payara_manage_accounts,
-  $manage_java             = $payara::params::payara_manage_java,
-  $package_prefix          = $payara::params::payara_package_prefix,
+  Boolean $manage_accounts         = $payara::params::payara_manage_accounts,
+  Boolean $manage_java             = $payara::params::payara_manage_java,
+  String $package_prefix          = $payara::params::payara_package_prefix,
   $parent_dir              = $payara::params::payara_parent_dir,
   $portbase                = $payara::params::payara_portbase,
   $remove_default_domain   = $payara::params::payara_remove_default_domain,
   $service_name            = $payara::params::payara_service_name,
-  $start_domain            = $payara::params::payara_start_domain,
+  Boolean $start_domain            = $payara::params::payara_start_domain,
   $tmp_dir                 = $payara::params::payara_tmp_dir,
-  $user                    = $payara::params::payara_user,
+  String $user                    = $payara::params::payara_user,
   $version                 = $payara::params::payara_version
   ) inherits payara::params {
   #
@@ -132,23 +132,6 @@ class payara (
 
   # Asadmin path
   $payara_asadmin_path = "${payara_dir}/bin/asadmin"
-
-  # Validate passed paramater values
-  validate_bool($add_path)
-  validate_bool($create_domain)
-  validate_bool($create_service)
-  validate_bool($create_passfile)
-  validate_bool($start_domain)
-  validate_bool($enable_secure_admin)
-  validate_string($asadmin_user)
-  validate_string($domain_name)
-  validate_string($group)
-  validate_string($install_method)
-  validate_bool($manage_accounts)
-  validate_bool($manage_java)
-  validate_string($package_prefix)
-  validate_string($user)
-
 
   if $remove_default_domain and $create_domain {
       if $domain_name == 'domain1' {

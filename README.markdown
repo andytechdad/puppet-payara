@@ -1,7 +1,7 @@
 # Puppet Payara module
 
 Original puppet-glassfish author - Lars Tobias Skjong-Børsting <larstobi@conduct.no>  
-Updated by - Gavin Williams <fatmcgav@gmail.com>
+Updated by - Gavin Williams <fatmcgav@gmail.com>  
 Forked and converted to Payara by - Andy Brown <andy@techdad.tech>
 
 License: GPLv3
