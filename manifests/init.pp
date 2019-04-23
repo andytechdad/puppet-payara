@@ -99,7 +99,7 @@ class payara (
   Boolean $create_passfile         = $payara::params::payara_create_passfile,
   String $domain_name             = $payara::params::payara_domain,
   $domain_template         = $payara::params::payara_domain_template,
-  Optional $download_mirror         = undef,
+  String $download_mirror         = "http://search.maven.org/remotecontent?filepath=fish/payara/distributions/payara/$payara::version",
   Boolean $enable_secure_admin     = $payara::params::payara_enable_secure_admin,
   $gms_enabled             = $payara::params::payara_gms_enabled,
   $gms_multicast_port      = $payara::params::payara_multicast_port,
