@@ -61,10 +61,6 @@ define payara::create_instance (
   $node_name         = $::hostname,
   $node_user         = $payara::user,
   $service_name      = $payara::service_name) {
-  # Validate params
-  validate_string($asadmin_user)
-  validate_absolute_path($asadmin_passfile)
-  validate_string($instance_name)
 
   # Service name
   if ($service_name == undef) {

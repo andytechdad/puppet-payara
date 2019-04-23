@@ -52,15 +52,6 @@ define payara::create_cluster (
   $gms_enabled           = $payara::gms_enabled,
   $gms_multicast_port    = $payara::gms_multicast_port,
   $gms_multicast_address = $payara::gms_multicast_address) {
-  # Validate params
-  validate_string($asadmin_user)
-  validate_absolute_path($asadmin_passfile)
-  validate_string($cluster_name)
-
-  # Check boolean if provided
-  if $gms_enabled {
-    validate_bool($gms_enabled)
-  }
 
   # Create the cluster
   cluster { $cluster_name:

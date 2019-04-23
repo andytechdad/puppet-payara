@@ -187,9 +187,6 @@ class payara (
 
   # Do we need to create a domain on installation?
   if $create_domain {
-    # Validate params required for domain creation
-    validate_string($domain_name)
-    validate_absolute_path($asadmin_passfile)
 
     # Service name
     if ($service_name == undef) {

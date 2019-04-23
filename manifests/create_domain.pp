@@ -68,20 +68,6 @@ define payara::create_domain (
     $svc_name = $service_name
   }
 
-  # Validate params
-  validate_absolute_path($asadmin_path)
-  validate_string($asadmin_user)
-  validate_absolute_path($asadmin_passfile)
-  validate_string($portbase)
-  validate_bool($start_domain)
-  validate_bool($enable_secure_admin)
-  validate_bool($create_service)
-
-  # Validate the domain_template if specified...
-  if $domain_template {
-    validate_absolute_path($domain_template)
-  }
-
   # Create the domain
   domain { $domain_name:
     ensure            => $ensure,

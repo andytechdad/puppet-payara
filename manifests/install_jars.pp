@@ -42,8 +42,6 @@ define payara::install_jars (
 
   # Check domain name if install_location = 'domain'
   if ($install_location == 'domain') {
-    validate_string($domain_name)
-
     # Set $service.
     if ($service_name == undef) {
       # Check if top-level svc_name is set

@@ -61,10 +61,6 @@ define payara::create_node (
   $das_host         = undef,
   $das_port         = '4848',
   $login            = true) {
-  # Validate params
-  validate_string($asadmin_user)
-  validate_absolute_path($asadmin_passfile)
-  validate_string($node_name)
 
   # Create the cluster
   cluster_node { $node_name:

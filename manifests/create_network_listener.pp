@@ -61,14 +61,6 @@ define payara::create_network_listener (
   $user              = $payara::user
 ) {
 
-  # Validate params
-  # The others will be validated by the type
-  validate_absolute_path($asadmin_path)
-  validate_string($asadmin_user)
-  validate_absolute_path($asadmin_passfile)
-  validate_string($portbase)
-  validate_string($user)
-
   # Create
   networklistener { $name:
     ensure       => $ensure,
