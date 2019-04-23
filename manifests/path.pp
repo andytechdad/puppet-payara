@@ -1,23 +1,3 @@
-# == Class: payara::path
-#
-# Add payara to profile
-#
-# === Parameters
-#
-# None
-#
-# === Examples
-#
-# Not applicable
-#
-# === Authors
-#
-# Gavin Williams <fatmcgav@gmail.com>
-#
-# === Copyright
-#
-# Copyright 2014 Gavin Williams, unless otherwise noted.
-#
 class payara::path {
   case $::osfamily {
     'RedHat' : {

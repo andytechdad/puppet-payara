@@ -1,7 +1,3 @@
-# Class: payara::java
-#
-# Manages java installation if required
-#
 class payara::java {
   # Get the package name based on required java_ver.
   case $payara::java_ver {

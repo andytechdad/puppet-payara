@@ -76,18 +76,7 @@
 #  [*user*]            - Payara user name.
 #
 #  [*version*]         - Payara version, defaults to '3.1.2.2'.
-#
-# === Examples
-#
-#
-# === Authors
-#
-# Gavin Williams <fatmcgav@gmail.com>
-#
-# === Copyright
-#
-# Copyright 2014 Gavin Williams, unless otherwise noted.
-#
+
 class payara (
   Boolean $add_path                = $payara::params::payara_add_path,
   String $asadmin_user            = $payara::params::payara_asadmin_user,

@@ -1,24 +1,3 @@
-# == Class: payara::params
-#
-# This class manages payara module params.
-#
-# === Parameters
-#
-#  None
-#
-# === Examples
-#
-# Not applicable
-#
-# === Authors
-#
-# Gavin Williams <fatmcgav@gmail.com>
-#
-# === Copyright
-#
-# Copyright 2014 Gavin Williams, unless otherwise noted.
-#
-
 class payara::params {
   # Installation method. Can be: 'package','zip'.
   $payara_install_method      = 'zip'

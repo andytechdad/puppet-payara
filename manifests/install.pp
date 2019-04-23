@@ -1,24 +1,3 @@
-# == Class: payara::install
-#
-# This class manages payara installation.
-# Can only be called from payara::init class.
-#
-# === Parameters
-#
-#  None
-#
-# === Examples
-#
-# Not applicable
-#
-# === Authors
-#
-# Gavin Williams <fatmcgav@gmail.com>
-#
-# === Copyright
-#
-# Copyright 2015 Gavin Williams, unless otherwise noted.
-#
 class payara::install {
   # Create user/group if required
   if $payara::manage_accounts {

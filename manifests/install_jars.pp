@@ -1,35 +1,3 @@
-# == Define: payara::install_jars
-#
-# Install additional jars if required.
-#
-# === Parameters
-#
-# [*domain_name*] - Name of domain to install jar into.
-#  Required if `install_location' = domain`.
-#
-# [*download*] - Should the jar be downloaded?
-#  Defaults to false.
-#
-# [*install_location*] - Where to install the jar.
-#  Defaults to 'installation'. Can also be 'domain' or 'mq'.
-#
-# [*service_name*] - Service name of domain to notify
-#  Required if `install_location' = 'domain` and a non-standard
-#  service name is being used.
-#
-# [*source*] - Source to copy jar file from.
-#
-# === Examples
-#
-#
-# === Authors
-#
-# Gavin Williams <fatmcgav@gmail.com>
-#
-# === Copyright
-#
-# Copyright 2014 Gavin Williams, unless otherwise noted.
-#
 define payara::install_jars (
   $domain_name      = undef,
   $download         = false,
