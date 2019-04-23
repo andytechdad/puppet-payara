@@ -41,56 +41,6 @@ Puppet::Type.newtype(:deployment_group) do
     end
   end
 
-  newparam(:gmsenabled) do
-    desc "Should Group Messaging service be enabled. Default: true"
-    defaultto(:true)
-    newvalues(:true, :false)
-  end
-
-  newparam(:multicastport) do
-    desc "The port number of  communication  port  on  which  GMS
-    listens  for  group  events. This option must specify a
-    valid port number in the range 2048-49151. The default
-    is an automatically generated value in this range"
-
-    validate do |value|
-      raise ArgumentError, "Multicast port must be between 2048 and 49151." unless value.to_i.between?(2048,49151)
-    end
-
-    munge do |value|
-      case value
-      when String
-        if value =~ /^[-0-9]+$/
-          value = Integer(value)
-        end
-      end
-
-      return value
-    end
-  end
-
-  newparam(:multicastaddress) do
-    desc "The address on which GMS listens for group events. This
-    option  must  specify  a multicast address in the range
-    224.0.0.0  through  239.255.255.255.  The  default   is
-    228.9.XX.YY,  where  XX  and  YY are automatically gen-
-    erated independent values between 0 and 255."
-
-    validate do |value|
-      begin
-        # Create required IPAddr objects
-        t = IPAddr.new(value).to_i
-        low = IPAddr.new('224.0.0.0').to_i
-        high = IPAddr.new('239.255.255.255').to_i
-      rescue ArgumentError
-        fail("Invalid value for multicastaddress: #{value}")
-      end
-
-      # Check that the value is between low and high thresholds
-      raise ArgumentError, "Multicast address must be between 224.0.0.0 and 239.255.255.255." unless t.between?(low,high)
-    end
-  end
-
   newparam(:asadminuser) do
     desc "The internal Glassfish user asadmin uses. Default: admin"
     defaultto 'admin'

@@ -9,9 +9,6 @@ Puppet::Type.type(:deployment_group).provide(:asadmin,
     # Start a new args array
     args = Array.new
     args << "create-deployment-group"
-    args << "--gmsenabled" << @resource[:gmsenabled] if @resource[:gmsenabled]
-    args << "--multicastport" << @resource[:multicastport] if @resource[:multicastport]
-    args << "--multicastaddress" << @resource[:multicastaddress] if @resource[:multicastaddress]
     args << @resource[:name]
 
     # Run the create command
